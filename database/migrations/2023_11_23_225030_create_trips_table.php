@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\User;
+use App\Models\Driver;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -13,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Driver::class);
+            $table->foreignIdFor(User::class);
+            $table->boolean('is_started')->default(false);
+            $table->boolean('is_complete')->default(false);
+            $table->json('origin')->nullable();
+            $table->json('destination')->nullable();
+            $table->string('destination_name')->nullable();
+            $table->string('driver_location')->nullable();
             $table->timestamps();
         });
     }

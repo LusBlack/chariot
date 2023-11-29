@@ -33,6 +33,7 @@ class DriverController extends Controller
         $user->driver()->updateOrCreate($request->only([
             'year',
             'make',
+            'model',
             'color',
             'license_plate'
         ]));

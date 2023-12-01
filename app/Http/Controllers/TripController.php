@@ -98,8 +98,4 @@ class TripController extends Controller
 
         return $trip;
     }
-
-
-
-
 }
